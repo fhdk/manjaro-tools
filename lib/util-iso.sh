@@ -253,17 +253,14 @@ make_iso() {
 
 gen_iso_fn(){
     local vars=() name
-    vars+=("${iso_name}")    
+    vars+=("${iso_name}")
     if ! ${chrootcfg};then
         [[ -n ${profile} ]] && vars+=("${profile}")
     fi
     [[ ${initsys} == 'openrc' ]] && vars+=("${initsys}")
     vars+=("${dist_release}")
     vars+=("${target_branch}")
-    
-    ! [[ ${full_iso} ]] && vars+=("minimal")
-    
-    vars+=("${target_arch}")    
+    vars+=("${target_arch}")
     for n in ${vars[@]};do
         name=${name:-}${name:+-}${n}
     done
